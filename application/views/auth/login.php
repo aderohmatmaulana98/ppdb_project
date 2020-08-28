@@ -1,5 +1,4 @@
 <div id="auth">
-
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5 col-sm-12 mx-auto">
