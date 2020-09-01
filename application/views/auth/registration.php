@@ -41,7 +41,7 @@
 									<a href="<?= base_url('auth')  ?>">Have an account? Login</a>
 								</div>
 								<div class="clearfix">
-									<button type="submit" class="btn btn-primary float-left">Submit</button>
+									<button type="submit" class="btn btn-primary float-left">Sign up</button>
 								</div>
 							</form>
 						</div>
