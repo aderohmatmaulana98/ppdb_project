@@ -42,31 +42,51 @@
             
         </div>
         <div class="modal fade modal-borderless" id="prestasiModal" role="dialog">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-                    <div class="modal-body">
-                    <p>This is a large modal.</p>
+                    <div class="modal-body text-center">
+                        <img src="<?= base_url() ?>assets/assets/images/jcbt.png" alt="" srcset="" class="mx-auto d-block mb-4">
+                        <p>Computer-Based Test(CBT) adalah jalur seleksi tes online yang diselenggarakan pihak sekolah untuk calon siswa/i yang berminat. Pada jalur ini, seluruh perserta dapat memilih jadwal tes online selama masa pendaftaran berlangsung.</p>
+                        <hr>
+                        <h4 class="text-left text-primary">Syarat pendaftaran</h4>
+                        <ol class="text-left">
+                            <li>Siswa/i lulusan tahun ajaran 2019/2020</li>
+                            <li>Dinyatakan lulus dari pihak sekolah</li>
+                            <li>nim >= 24</li>
+                        </ol>
+                        <hr>
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="modal fade modal-borderless" id="cbtModal" role="dialog">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-                    <div class="modal-body">
-                    <p>This is a large modal.</p>
+                    <div class="modal-body text-center">
+                        <img src="<?= base_url() ?>assets/assets/images/jprestasi.png" alt="" srcset="" class="mx-auto d-block mb-4">
+                        <p>Jalur prestasi adalah jalur seleksi yang diselenggarakan pihak sekolah untuk calon siswa/i yang berminat. Pada jalur ini, calon siswa/i diseleksi dengan menggunakan nilai rata-rata lapor dari semester 1 - 5.</p>
+                        <hr>
+                        <h4 class="text-left text-primary">Syarat pendaftaran</h4>
+                        <ol class="text-left">
+                            <li>Siswa/i lulusan tahun ajaran 2019/2020</li>
+                            <li>Dinyatakan lulus dari pihak sekolah</li>
+                            <li>nim >= 24</li>
+                            <li>Nilai rata-rata semester >= 80</li>
+                            <li>Sertifikat lomba apabila ada</li>
+                        </ol>
+                        <hr>
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-default">Daftar</button>
+                        <button type="button" class="btn btn-default">Daftar</button>
                     </div>
                 </div>
             </div>
