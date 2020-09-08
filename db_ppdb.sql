@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 28, 2020 at 09:40 AM
+-- Generation Time: Sep 08, 2020 at 04:21 PM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.3.5
 
@@ -164,7 +164,52 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `nama_lengkap`, `email`, `password`, `role_id`, `gambar`, `date_created`, `update_created`, `is_active`) VALUES
-(3, 'Ade Rohmat Maulana', 'aderogmatmaulana77@gmail.com', '$2y$10$MshZ5lVt4MxWmBd09U.TVOkoSCWFKSjfz8fJYDmU.B/94ZYItAnsi', 3, 'user.png', 1598599803, 1598599803, 1);
+(4, 'Ade rohmat maulana', 'aderohmatmaulana77@gmail.com', '$2y$10$9Q7IHqS.XIQ9eUqrAiJzuOlA6R2bcFQmfZMZd/qrPF6k21kIRlZvO', 1, 'user.png', 1599139544, 1599139544, 1),
+(5, 'Hanipandus', 'hanipandus@gmail.com', '$2y$10$9qZKNwU5JxqFk9xCffnu9OgMbXGTvlzP/zyvxzB8/zUPSLjy2jDuS', 2, 'user.png', 1599148650, 1599148650, 1),
+(6, 'Alip kolopaking', 'alipbata@gmail.com', '$2y$10$YibM8468Fuccbh1ANgpsd.D06qKqn4McrmJfX45SPBZ4HDv0OjlYq', 2, 'user.png', 1599148691, 1599148691, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_access_menu`
+--
+
+CREATE TABLE `user_access_menu` (
+  `id` int(11) NOT NULL,
+  `role_id` int(11) NOT NULL,
+  `menu_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_access_menu`
+--
+
+INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
+(1, 1, 1),
+(2, 2, 2),
+(8, 1, 3),
+(9, 1, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_menu`
+--
+
+CREATE TABLE `user_menu` (
+  `id` int(11) NOT NULL,
+  `menu` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_menu`
+--
+
+INSERT INTO `user_menu` (`id`, `menu`) VALUES
+(1, 'ADMIN'),
+(2, 'MAIN MENU'),
+(3, 'MENU'),
+(4, 'coba');
 
 -- --------------------------------------------------------
 
@@ -182,9 +227,41 @@ CREATE TABLE `user_role` (
 --
 
 INSERT INTO `user_role` (`id`, `role`) VALUES
-(1, 'Super Admin'),
-(2, 'Admin'),
-(3, 'Siswa');
+(1, 'Admin'),
+(2, 'Siswa');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_sub_menu`
+--
+
+CREATE TABLE `user_sub_menu` (
+  `id` int(11) NOT NULL,
+  `menu_id` int(11) NOT NULL,
+  `title` varchar(128) NOT NULL,
+  `url` varchar(128) NOT NULL,
+  `icon` varchar(128) NOT NULL,
+  `is_active` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_sub_menu`
+--
+
+INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
+(1, 1, 'Dashboard', 'admin', 'home', 1),
+(2, 2, 'Registrasi', 'user/registrasi', 'file-text', 1),
+(3, 2, 'Jadwal', 'user/jadwal', 'calendar', 1),
+(4, 2, 'Jalur Seleksi', 'user/jalur_seleksi', 'corner-up-right', 1),
+(5, 2, 'Pembayaran', 'user/pembayaran', 'dollar-sign', 1),
+(6, 3, 'Menu Management', 'menu', 'sliders', 1),
+(7, 3, 'Submenu Management', 'menu/submenu', 'clipboard', 1),
+(8, 1, 'sdffs', 'sdada', 'sliders', 1),
+(9, 4, 'coba1', 'coba/coba', 'home', 1),
+(10, 0, 'dfsf', 'fsdf', 'dfsdf', 1),
+(11, 0, 'fsdfdf', 'fdsfdf', 'fdsff', 1),
+(12, 0, 'dfdffgdg', 'fdgfdgfg', 'fgdfgdfg', 1);
 
 --
 -- Indexes for dumped tables
@@ -245,9 +322,27 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_access_menu`
+--
+ALTER TABLE `user_access_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_menu`
+--
+ALTER TABLE `user_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user_role`
 --
 ALTER TABLE `user_role`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_sub_menu`
+--
+ALTER TABLE `user_sub_menu`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -306,13 +401,31 @@ ALTER TABLE `status_diterima`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `user_access_menu`
+--
+ALTER TABLE `user_access_menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `user_menu`
+--
+ALTER TABLE `user_menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `user_sub_menu`
+--
+ALTER TABLE `user_sub_menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
