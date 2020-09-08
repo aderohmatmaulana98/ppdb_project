@@ -38,10 +38,14 @@ class Auth extends CI_Controller
 				if (password_verify($password, $user['password'])) {
 					$data = [
 						'email' => $user['email'],
-						'role' => $user['role_id']
+						'role_id' => $user['role_id']
 					];
 					$this->session->set_userdata($data);
-					redirect('user');
+					if ($user['role_id'] == 1) {
+						redirect('admin');
+					} else {
+						redirect('user');
+					}
 				} else {
 					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
 			Wrong password !
@@ -101,7 +105,8 @@ class Auth extends CI_Controller
 		}
 	}
 
-	public function logout(){
+	public function logout()
+	{
 		$this->session->sess_destroy();
 		redirect('auth');
 	}
