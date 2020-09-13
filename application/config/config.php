@@ -25,6 +25,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 */
 $config['base_url'] = 'http://localhost/siakad/';
 
+$route['send-email'] = 'email controller';
+$route['email'] = 'email controller/SendEmail';
+
 /*
 |--------------------------------------------------------------------------
 | Index File

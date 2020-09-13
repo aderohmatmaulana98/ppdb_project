@@ -54,7 +54,7 @@ class Auth extends CI_Controller
 				}
 			} else {
 				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-			Email not activated !
+			Email belum aktif !
 		  </div>');
 				redirect('auth');
 			}
@@ -91,13 +91,14 @@ class Auth extends CI_Controller
 				'email' => htmlspecialchars($this->input->post('email', true)),
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'role_id' => 3,
-				'is_active' => 1,
+				'is_active' => 0,
 				'gambar'	=> 'user.png',
 				'date_created' => time(),
 				'update_created' => time()
 
 			];
 			$this->db->insert('user', $data);
+			$this->SendEmail();
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
 			Akun berhasil dibuat, silahkan aktivasi akun!
 		  </div>');
@@ -109,5 +110,28 @@ class Auth extends CI_Controller
 	{
 		$this->session->sess_destroy();
 		redirect('auth');
+	}
+
+	public function SendEmail(){
+		$this->load->config('email');
+        $this->load->library('email');
+        
+        $from = $this->config->item('smtp_user');
+        $to = $this->input->post('email');
+        $subject = 'Konfirmasi Email';
+        $message ="Selamat Datang di siakad \r\n Sialahakan konfirmasi email anda <a href='https://www.facebook.com'>test</a>";
+
+        $this->email->set_newline("\r\n");
+        $this->email->from($from);
+        $this->email->to($to);
+        $this->email->subject($subject);
+        $this->email->message($message);
+
+        if ($this->email->send()) {
+            echo 'Your Email has successfully been sent.';
+        } else {
+            show_error($this->email->print_debugger());
+        }	
+		
 	}
 }
