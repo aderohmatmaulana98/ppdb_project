@@ -3,6 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class User extends CI_Controller
 {
+	public function __construct()
+	{
+		parent::__construct();
+		is_logged_in();
+	}
 	public function index()
 	{
 		$data['title'] = 'User';
@@ -30,7 +35,7 @@ class User extends CI_Controller
 			$this->load->view('home/home_header', $data);
 			$this->load->view('home/sidebar', $data);
 			$this->load->view('home/top_nav', $data);
-			$this->load->view('home/jalur_seleksi', $data);
+			$this->load->view('user/jalur_seleksi', $data);
 			$this->load->view('home/home_footer');
 		}
 	}

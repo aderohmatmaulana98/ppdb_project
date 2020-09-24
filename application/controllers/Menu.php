@@ -7,6 +7,7 @@ class Menu extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('M_menu');
+		is_logged_in();
 	}
 	public function index()
 	{
@@ -77,36 +78,38 @@ class Menu extends CI_Controller
 		}
 	}
 
-	public function hapusSubMenu($id){
+	public function hapusSubMenu($id)
+	{
 		$query = array('id' => $id);
 		$this->db->delete('user_sub_menu', $query);
 		$this->session->set_flashdata(
-				'message',
-				'<div class="alert alert-success alert-dismissible fade show" role="alert">
+			'message',
+			'<div class="alert alert-success alert-dismissible fade show" role="alert">
 				Submenu berhasil dihapus
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 				  <span aria-hidden="true">&times;</span>
 				</button>
 			  </div>'
 
-			);
+		);
 		redirect('menu/submenu');
 	}
 
-	public function hapusMenu($id){
+	public function hapusMenu($id)
+	{
 		$query = array('id' => $id);
 		$this->db->delete('user_menu', $query);
 		$this->db->query("ALTER TABLE user_menu AUTO_INCREMENT = $id") - 1;
 		$this->session->set_flashdata(
-				'message',
-				'<div class="alert alert-success alert-dismissible fade show" role="alert">
+			'message',
+			'<div class="alert alert-success alert-dismissible fade show" role="alert">
 				Submenu berhasil dihapus
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 				  <span aria-hidden="true">&times;</span>
 				</button>
 			  </div>'
 
-			);
+		);
 		redirect('menu/index');
 	}
 }

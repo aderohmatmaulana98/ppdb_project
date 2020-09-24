@@ -105,6 +105,14 @@ class Auth extends CI_Controller
 			redirect('auth');
 		}
 	}
+	public function blocked()
+	{
+		$data['user'] =  $this->db->get_where(
+			'user',
+			['role_id' => $this->session->userdata('role_id')]
+		)->row_array();
+		$this->load->view('auth/blocked', $data);
+	}
 
 	public function logout()
 	{
@@ -112,26 +120,26 @@ class Auth extends CI_Controller
 		redirect('auth');
 	}
 
-	public function SendEmail(){
+	public function SendEmail()
+	{
 		$this->load->config('email');
-        $this->load->library('email');
-        
-        $from = $this->config->item('smtp_user');
-        $to = $this->input->post('email');
-        $subject = 'Konfirmasi Email';
-        $message ="Selamat Datang di siakad \r\n Sialahakan konfirmasi email anda <a href='https://www.facebook.com'>test</a>";
+		$this->load->library('email');
 
-        $this->email->set_newline("\r\n");
-        $this->email->from($from);
-        $this->email->to($to);
-        $this->email->subject($subject);
-        $this->email->message($message);
+		$from = $this->config->item('smtp_user');
+		$to = $this->input->post('email');
+		$subject = 'Konfirmasi Email';
+		$message = "Selamat Datang di siakad \r\n Sialahakan konfirmasi email anda <a href='https://www.facebook.com'>test</a>";
 
-        if ($this->email->send()) {
-            echo 'Your Email has successfully been sent.';
-        } else {
-            show_error($this->email->print_debugger());
-        }	
-		
+		$this->email->set_newline("\r\n");
+		$this->email->from($from);
+		$this->email->to($to);
+		$this->email->subject($subject);
+		$this->email->message($message);
+
+		if ($this->email->send()) {
+			echo 'Your Email has successfully been sent.';
+		} else {
+			show_error($this->email->print_debugger());
+		}
 	}
 }
