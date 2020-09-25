@@ -14,3 +14,6 @@
 	<link rel="stylesheet" href="<?= base_url() ?>assets/assets/css/app.css">
 	<link rel="shortcut icon" href="<?= base_url() ?>assets/assets/images/favicon.svg" type="image/x-icon">
 </head>
+
+<body>
+
